@@ -65,16 +65,16 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  *  {{{
  *  # in serial
- *  scons build=GccOptNative projects/Harvey2014/test/TestValidateSimulationLiteratePaper.hpp
+ *  scons build=GccOptNative projects/Harvey2015/test/TestValidateSimulationLiteratePaper.hpp
  *  # In parallel
- *  scons build=GccOptNative_2 projects/Harvey2014/test/TestValidateSimulationLiteratePaper.hpp
+ *  scons build=GccOptNative_2 projects/Harvey2015/test/TestValidateSimulationLiteratePaper.hpp
  *  }}}
  *
  *  After this the positional output may be checked to machine output precision:
  *  {{{
  *  # May need to see this to $CHASTE_TEST_OUTPUT
  *  export OUTPUT=/tmp/$USER/testoutput
- *  ./projects/Harvey2014/test/CompareParallelResults.py 2 $OUTPUT/ValidateSimulation3Rand1/results_from_time_0/results.viznodes $OUTPUT/ValidateSimulation3Rand2/results_from_time_0/results.viznodes
+ *  ./projects/Harvey2015/test/CompareParallelResults.py 2 $OUTPUT/ValidateSimulation3Rand1/results_from_time_0/results.viznodes $OUTPUT/ValidateSimulation3Rand2/results_from_time_0/results.viznodes
  *  }}}
  * == Code overview ==
  *
@@ -122,7 +122,7 @@ public:
          */
         ParallelCellsGenerator<FixedDurationGenerationBasedCellCycleModel, 2> generator;
 
-        generator.GenerateParallelCells("projects/Harvey2014/test/data/2DCellsCircle.dat",
+        generator.GenerateParallelCells("projects/Harvey2015/test/data/2DCellsCircle.dat",
                                         cells,
                                         mesh,
                                         CellPropertyRegistry::Instance()->Get<DifferentiatedCellProliferativeType>());

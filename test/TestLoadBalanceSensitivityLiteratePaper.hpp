@@ -48,11 +48,11 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  * 
  * For example:
  * {{{
- * scons build=GccOptNative_2 test_suite=projects/Harvey2014/tests/TestLoadBalanceSensitivityLiteratePaper.hpp
+ * scons build=GccOptNative_2 test_suite=projects/Harvey2015/tests/TestLoadBalanceSensitivityLiteratePaper.hpp
  * }}}
  * or, to produce the 8-way simulation of Figure 6c and Figure 7,
  * {{{
- * scons build=GccOptNative_8 projects/Harvey2014/tests/TestLoadBalanceSensitivityLiteratePaper.hpp
+ * scons build=GccOptNative_8 projects/Harvey2015/tests/TestLoadBalanceSensitivityLiteratePaper.hpp
  * }}}
  */
 

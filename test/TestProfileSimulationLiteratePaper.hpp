@@ -64,7 +64,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  * The geometry for the construction of the population is contained in
  * {{{
- * projects/Harvey2014/test/data/2d_1024_cells.dat
+ * projects/Harvey2015/test/data/2d_1024_cells.dat
  * }}}
  *
  * == Use ==
@@ -79,7 +79,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  * A useful for loop (in `bash`) would be
  * {{{
- * for i in {1..32}; do echo $i "processes ===";scons build=GccOptNative_$i projects/Harvey2014/test/TestProfileSimulationLiteratePaper.hpp | grep ##Prof; done
+ * for i in {1..32}; do echo $i "processes ===";scons build=GccOptNative_$i projects/Harvey2015/test/TestProfileSimulationLiteratePaper.hpp | grep ##Prof; done
  * }}}
  * This runs the test on increasingly larger number of processes and only outputs the lines which state
  * the total execution time for the simulation.
@@ -174,7 +174,7 @@ public:
          * We use the `GenerateSemCells` method to create `total_num_cells` repeating patterns
          * of 1000 cells using the geometry defined in test/data/2d_1024_cells.dat.
          */
-        generator.GenerateSemCells("projects/Harvey2014/test/data/2d_1024_cells.dat", cells, mesh);
+        generator.GenerateSemCells("projects/Harvey2015/test/data/2d_1024_cells.dat", cells, mesh);
 
         /*
          * This code block writes out the initial distribution of cell numbers

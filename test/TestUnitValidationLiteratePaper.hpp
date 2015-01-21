@@ -47,9 +47,9 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  * Both tests in this file are designed to be run twice:
  *  {{{
  *  # in serial
- *  scons build=GccOptNative projects/Harvey2014/test/TestUnitValidationLiteratePaper.hpp
+ *  scons build=GccOptNative projects/Harvey2015/test/TestUnitValidationLiteratePaper.hpp
  *  # In parallel
- *  scons build=GccOptNative_2 projects/Harvey2014/test/TestUnitValidationLiteratePaper.hpp
+ *  scons build=GccOptNative_2 projects/Harvey2015/test/TestUnitValidationLiteratePaper.hpp
  *  }}}
  *
  *  After this the positional output may be checked to machine output precision:
@@ -63,7 +63,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *  The `results.viznode` file show one line per timestep with the x,y,z coordinates of each cell listed in order.
  *
  *  Note that the output is ''not'' given to machine precision (only C++ `stdio` precision) unless you amend the trunk with `setprecision(..)` in
- *  the  `NodeLocationWriter` (see wiki:PaperTutorials/Harvey2014/ValidateSimulation).
+ *  the  `NodeLocationWriter` (see wiki:PaperTutorials/Harvey2015/ValidateSimulation).
  *
  *  VTK files will contain full machine precision position information, together with process ownership.
  *  {{{

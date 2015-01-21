@@ -44,7 +44,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  * The geometry for the construction of the population is contained in
  * {{{
- * projects/Harvey2014/test/data/1024000_2d_cells.dat
+ * projects/Harvey2015/test/data/1024000_2d_cells.dat
  * }}}
  *
  * == Use ==
@@ -54,7 +54,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  * A useful for loop (in `bash`) would be
  * {{{
- * for i in {1..32}; do echo $i "processes ===";scons build=GccOptNative_$i projects/Harvey2014/test/TestMemoryUseLiteratePaper.hpp | grep memory; done
+ * for i in {1..32}; do echo $i "processes ===";scons build=GccOptNative_$i projects/Harvey2015/test/TestMemoryUseLiteratePaper.hpp | grep memory; done
  * }}}
  *
  * This runs the test on increasingly larger number of processes and only outputs the lines which state
@@ -135,7 +135,7 @@ public:
          */
         std::vector<CellPtr> cells;
         ParallelCellsGenerator<FixedDurationGenerationBasedCellCycleModel, 2> generator;
-        generator.GenerateParallelCells("projects/Harvey2014/test/data/1024000_2d_cells.dat",
+        generator.GenerateParallelCells("projects/Harvey2015/test/data/1024000_2d_cells.dat",
                                         cells,
                                         mesh,
                                         CellPropertyRegistry::Instance()->Get<DifferentiatedCellProliferativeType>());
