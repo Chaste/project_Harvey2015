@@ -1,0 +1,78 @@
+{{{#!comment
+This wiki page is auto-generated from the file
+projects/Harvey2014/Summary.wiki
+edit that file, don't edit this page on trac!
+}}}
+
+= A parallel implementation of an off-lattice individual-based model of multicellular populations =
+
+Welcome to the Chaste wiki.
+
+This section contains pages generated automatically from the source code accompanying "A parallel implementation of an off-lattice individual-based model of multicellular populations".
+
+Before running these examples you will need to [wiki:InstallGuides/InstallGuide install Chaste's dependencies] and the [http://www.cs.ox.ac.uk/chaste/download.html source code for version 3.2].
+The easiest way to do this is using an Ubuntu machine (or an Ubuntu virtual machine) as discussed on InstallGuides/UbuntuPackage.
+Note that Chaste is only fully supported on !Linux/Unix systems, so users of Windows or Mac OS X may need to follow the virtual machine route.
+For manual installation of each dependency, on any version of Linux, see DeveloperInstallGuide.
+
+The paper is about functionality which exists in the released version of Chaste (Version 3.2, 2014) but any additional code which was used to produce the results and 
+figures in the paper is annotated and explained here.  The idea is that with the Chaste release and this additional code you are able to reproduce any the figures in the paper.
+This is subject to your having access to a machine/cluster with sufficient processing cores.  Please note the the exact timing results will be architecture dependent.
+'''Note''': While the paper was developed with release version 3.2 (2014) the code presented here is also compatible with release version 3.3 (2015).
+
+Before looking at these, you may wish to look at some of the [UserTutorials basic user tutorials].
+
+== Getting the code ==
+
+If you are reading this as a Wiki page and do not have the bolt-on project you can download it anonymously as  [attachment:Harvey2014_release_3.2.tgz  an attachment] to this page. ''Todo: add to main download page and collect stats.''
+
+== Documentation ==
+
+There are three folders - `build`, `src` and `test`.
+
+ 1. The `build` folder will contain the executables that you compile and can be ignored.
+ 1. The `src` folder contains the following helper classes which are used only in [wiki:PaperTutorials/Harvey2014/ProfileSimulation test/TestProfileSimulation.hpp] which produces the speed-up plot, Figure 5.
+  * `SemCellsGenerator.hpp`, `SemCellsGenerator.cpp` - this class helps to generate large numbers of cells by using a template (examples of which may be found in Harvey2014/test/data) and repeating this pattern of cells.  The name of this class others refer to its use with another project simulating the subcellular element model ''Modeling multicellular systems using subcellular elements, Newman, T.J, Math. Biosci. Eng. (2) 2005''.
+  * `SemForce.hpp`, `SemForce.cpp` - this subclass of `GeneralisedLinearSpringForce` (in the main Chaste code) which provides      an alternative pairwise force between cells. This is used in the large-scale profiling simulation to rescale the interaction     between large numbers of cells in closer proximity.
+  * `SemMesh.hpp`, `SemMesh.cpp` - this subclass of `NodesOnlyMesh` (in the main Chaste code) which associates an additional integer      index with each cell object. This is used in other projects and is not used in the parallel functionality of the code.
+  * `SemParameterScaler.hpp`, `SemParameterScaler.cpp` - this class is used to provide a consistent simulation-wide scaling      of model parameters and is not used in the parallel functionality of the code.
+ 1. The `test` folder contains (in order of introduction in our paper):
+  * [wiki:PaperTutorials/Harvey2014/UnitValidation TestUnitValidationLiteratePaper.hpp] - This file can be run to compare the results of a simple three cell simulation in parallel and serial and see that the results obtained are the same as described in Section 3.1.
+  * [wiki:PaperTutorials/Harvey2014/ValidateSimulation TestValidateSimulation.hpp] - This file can be run to compare the result of a larger (256 cell) simulation in parallel and serial (Figure 3).  A script (`CompareParallelResults.py`) is provided to aid comparison of the results. As the output order of the cell locations      is dependent of the parallel decomposition of the cells, this script first sorts the cell locations before comparing them.      The output of the script is a list of tuples with the time in the first entry, and the mean difference between cell locations in the       second entry.
+  * [wiki:PaperTutorials/Harvey2014/MemoryUse TestMemoryUse.hpp] - This file can be run to generate the results in Figure 4 showing the distribution of memory      use between processes when a cell population simulation is constructed.
+  * [wiki:PaperTutorials/Harvey2014/ProfileSimulation TestProfileSimulation.hpp] - This file can be run to generate the results used for Figure 5. It simulates a population of      1,024,000 cells for 100 integration timesteps to demonstrate speed-up achieved in parallel. Such a large simulation requires     a large amount of available memory. By reducing the number of cells the simulation may be run on a desktop machine. The scaling     results in Figure 5 were obtained using a high-performance computer and are unlikely to be reproducible on a desktop.
+  * [wiki:PaperTutorials/Harvey2014/LoadBalanceSensitivity TestLoadBalanceSensitivity.hpp] - This file can be run to generate the results used for Figure 6   including the speed up using the load balancing approach, and the sensitivity of the speed up to the rebalancing frequency.
+
+----
+'''Note''':  the paper was developed with release version 3.2 (2014) but the code presented here is also compatible with release version 3.3 (2015).
+
+Once you have all the Chaste dependencies installed (as per https://chaste.cs.ox.ac.uk/cgi-bin/trac.cgi/wiki/DeveloperInstallGuide 
+using Ubuntu is by far the easiest way to do this). You should get a copy of Chaste 3.2 (from http://www.cs.ox.ac.uk/chaste/download)
+and copy the folder containing this README file into 
+{{{
+<Chaste3.2 path>/projects/Harvey2014
+}}}
+You can then run things with, for example,
+{{{
+cd <Chaste3.2 path>
+scons build=GccOptNative test_suite=projects/Harvey2014/test/TestUnitValidationLiteratePaper.hpp
+}}}
+to run the simulations in parallel on (e.g.) 2 processes the command is 
+{{{
+scons build=GccOptNative_2 test_suite=projects/Harvey2014/test/TestUnitValidationLiteratePaper.hpp
+}}}
+
+To obtain optimal results on a given architecture, you should use no more than the number of physical
+processors contained in the machine. On most Linux platforms this can be found using a command such as:
+{{{
+grep ^processor /proc/cpuinfo | wc -l
+}}}
+
+
+
+
+
+
+
+
+For further information on using Chaste to solve these and related problems, see our [wiki:ChasteGuides extensive guide material].
