@@ -8,7 +8,8 @@ edit that file, don't edit this page on trac!
 
 Welcome to the Chaste wiki.
 
-This section contains pages generated automatically from the source code accompanying "A parallel implementation of an off-lattice individual-based model of multicellular populations".
+This section contains pages generated automatically from the source code accompanying Harvey el al. "A parallel implementation of an off-lattice individual-based model of multicellular populations", Computer Physics Communications, Volume 192, July 2015, Pages 130-137, [http://dx.doi.org/10.1016/j.cpc.2015.03.005].
+
 
 Before running these examples you will need to [wiki:InstallGuides/InstallGuide install Chaste's dependencies] and the [http://www.cs.ox.ac.uk/chaste/download.html source code for version 3.2].
 The easiest way to do this is using an Ubuntu machine (or an Ubuntu virtual machine) as discussed on InstallGuides/UbuntuPackage.
